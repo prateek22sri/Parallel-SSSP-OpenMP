@@ -48,16 +48,19 @@ typedef adjacency_list<vecS, distributedS<mpi_process_group, vecS>, undirectedS,
 
 
             // Parse command-line options
-			const char *filename = "file1.gr";
+			const char *filename = "file12.gr";
 			if (argc > 1) filename = argv[1];
 
 			// Open the METIS input file
 			std::ifstream in(filename);
 			graph::metis_reader reader(in);
 
+
 			// Load the graph using the default distribution
 			Graph g(reader.begin(), reader.end(), reader.weight_begin(),
 					reader.num_vertices());
+
+//			cout << "For processor " << process_id(process_group(g)) <<" start = "<<reader.begin()<<" and end = "<<reader.end();
 
 			// Get vertex 0 in the graph
 			graph_traits<Graph>::vertex_descriptor start = vertex(0, g);
