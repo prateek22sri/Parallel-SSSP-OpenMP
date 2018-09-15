@@ -1,1 +1,1 @@
-parallelDijkstra/*.c linguist-vendored
+parallelDijkstra/dijkstra.c linguist-vendored
